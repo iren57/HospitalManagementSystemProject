@@ -1,0 +1,35 @@
+<!-- book_appointment.html -->
+{% extends 'base.html' %}
+
+{% block title %}Book Appointment{% endblock %}
+
+{% block content %}
+  <h2>Book an Appointment, {{ patient.user.username }}!</h2>
+  <!-- Add your appointment booking content here -->
+{% endblock %}
+
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    {% load static %}#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Book Appointment</title>#}
+{#    <link rel="stylesheet" href="{% static 'css/styles.css' %}">#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<div class="container">#}
+{#    <h1>Book Appointment</h1>#}
+{#    <form method="post" action="{% url 'book_appointment' %}">#}
+{#        {% csrf_token %}#}
+{#        {{ form.as_p }}#}
+{#        <button type="submit">Book Appointment</button>#}
+{#    </form>#}
+{#</div>#}
+{##}
+{#</body>#}
+{#</html>#}
+
+

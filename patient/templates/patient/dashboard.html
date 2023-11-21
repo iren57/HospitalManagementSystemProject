@@ -1,0 +1,38 @@
+<!-- patient_dashboard.html -->
+{% extends 'base.html' %}
+
+{% block title %}Patient Dashboard{% endblock %}
+
+{% block content %}
+
+  <h2>Welcome, {{ patient.user.username }}!</h2>
+
+  <!-- Add your patient dashboard content here -->
+
+    <a href="{% url 'medical_history' %}">View Medical History</a>
+    <a href="{% url 'book_appointment' %}">Book Appointment</a>
+{% endblock %}
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    {% load static %}#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Patient Dashboard</title>#}
+{#    <link rel="stylesheet" href="{% static 'css/styles.css' %}">#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<div class="container">#}
+{#    <h1>Patient Dashboard</h1>#}
+{#    <div class="patient-details">#}
+{#        <h2>{{ patient.user.username }}</h2>#}
+{#        <!-- Display other patient details here -->#}
+{#    </div>#}
+{#    <a href="{% url 'medical_history' %}">View Medical History</a>#}
+{#    <a href="{% url 'book_appointment' %}">Book Appointment</a>#}
+{#</div>#}
+{##}
+{#</body>#}
+{#</html>#}
