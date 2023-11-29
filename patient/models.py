@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 class Patient(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    date_of_birth = models.DateField()
+    date_of_birth = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=10, choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')])
     address = models.TextField()
     phone_number = models.CharField(max_length=15)
@@ -19,10 +19,14 @@ class Patient(models.Model):
 
 class MedicalHistory(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    diagnosis = models.TextField()
-    medications = models.TextField()
-    allergies = models.TextField()
-    surgeries = models.TextField()
+    diagnosis = models.CharField(max_length=30, blank=False, null=False)
+    medications = models.CharField(max_length=30, blank=False, null=False)
+    allergies = models.CharField(max_length=30, blank=False, null=False)
+    surgeries = models.CharField(max_length=30, blank=False, null=False)
+
+
+    # def __str__(self):
+    #     return self.name
 
     def __str__(self):
         return f"Medical History for {self.patient.user.username}"
@@ -30,9 +34,10 @@ class MedicalHistory(models.Model):
 
 class Appointment(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    # patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     date_time = models.DateTimeField()
-    doctor_name = models.CharField(max_length=100)
-    purpose = models.TextField()
+    doctor_name = models.CharField(max_length=30, blank=False, null=False)
+    purpose = models.TextField(max_length=30, blank=False, null=False)
     is_confirmed = models.BooleanField(default=False)
 
     def __str__(self):

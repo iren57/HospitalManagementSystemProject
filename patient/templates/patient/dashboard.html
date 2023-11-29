@@ -1,38 +1,151 @@
-<!-- patient_dashboard.html -->
-{% extends 'base.html' %}
 
-{% block title %}Patient Dashboard{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
 
-{% block content %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+     <!-- Template Main CSS File -->
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+      <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+     <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
-  <h2>Welcome, {{ patient.user.username }}!</h2>
 
-  <!-- Add your patient dashboard content here -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <a href="{% url 'medical_history' %}">View Medical History</a>
-    <a href="{% url 'book_appointment' %}">Book Appointment</a>
-{% endblock %}
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+     <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Patient Dashboard</title>
+<style>
+  @keyframes slideIn {
+    0%{
+      transform: translateX(-100%);
+    }
+    100%{
+      transform: translateX(100%);
+    }
+  }
+#profile-container {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowed content */
+    position: relative; /* Position the container relative to its normal position */
+  }
 
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{#<head>#}
-{#    {% load static %}#}
-{#    <meta charset="UTF-8">#}
-{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
-{#    <title>Patient Dashboard</title>#}
-{#    <link rel="stylesheet" href="{% static 'css/styles.css' %}">#}
-{#</head>#}
-{#<body>#}
-{##}
-{#<div class="container">#}
-{#    <h1>Patient Dashboard</h1>#}
-{#    <div class="patient-details">#}
-{#        <h2>{{ patient.user.username }}</h2>#}
-{#        <!-- Display other patient details here -->#}
-{#    </div>#}
-{#    <a href="{% url 'medical_history' %}">View Medical History</a>#}
-{#    <a href="{% url 'book_appointment' %}">Book Appointment</a>#}
-{#</div>#}
-{##}
-{#</body>#}
-{#</html>#}
+  #profile-text {
+    display: inline-block; /* Display the text as an inline block */
+    animation: slideIn 0s linear infinite; /* Adjust the duration as needed */
+    background-color: cornflowerblue; /* Set your desired background color */
+    color: #333; /* Set your desired text color */
+    padding: 20px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+  }
+</style>
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">MediPlus HMS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <ul class="nav justify-content-end ">
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'patient_dashboard' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'medical_history' %}">Medical History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'appointment_list' %}">Book Appointment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Welcome, {{ patient.user.username }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'logout' %}">logout</a></li>
+            <li><a class="dropdown-item" href="{% url 'home' %}">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+
+  </div>
+</nav>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <h1>Welcome, {{ patient.user.username }} to your Patient Dashboard</h1>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="content">
+              <h3>Why Choose MediPlus?</h3>
+              <p>
+                  MediPlus connects you with a doctor of your choice remotely, it easens your mode of communication, travelling and long-queues. Here you are able to state your symptoms, view your medical history, book and view your appointments.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-receipt"></i>
+                    <h4>State your medical status</h4>
+                    <p>Keep a record of your recent medical status </p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-cube-alt"></i>
+                    <h4>Book Appointment</h4>
+                    <p>Choose the day you would like to visit a doctor</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-images"></i>
+                    <h4>View your medical history and appointments</h4>
+                    <p>See your records, you have a choice of updating or deleting them</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+</body>
+</html>
+
+

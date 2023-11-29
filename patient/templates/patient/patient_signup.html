@@ -1,0 +1,138 @@
+<!-- registration/patient_signup.html -->
+{#{% extends 'base.html' %}#}
+{#{% load bootstrap3 %}#}
+{##}
+{#{% block title %}Login/Register{% endblock %}#}
+{#{% block content %}#}
+{##}
+{#  <h2>Register</h2>#}
+{#  <form method="post" action="{% url 'patient_signup' %}">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <button type="submit">Sign Up</button>#}
+{#  </form>#}
+{##}
+{##}
+{#{% endblock %}#}
+
+{#<!doctype html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    {% load static %}#}
+{##}
+{#    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'js/bootstrap.bundle.min.js' %}">#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport"#}
+{#          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">#}
+{#    <meta http-equiv="X-UA-Compatible" content="ie=edge">#}
+{#    <title>Register</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#<h2>Register</h2>#}
+{#  <form method="post" action="{% url 'patient_signup' %}">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <button type="submit">Sign Up</button>#}
+{#  </form>#}
+{##}
+{#</body>#}
+{#</html>#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-control {
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .btn-signup {
+
+            background-color: #007bff ;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+        .btn-signup:hover{
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Register
+                </div>
+                <div class="card-body">
+                    <form method="post" action="{% url 'patient_signup' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ form.username.id_for_label }}">Username</label>
+                            {{ form.username }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.password1.id_for_label }}">Password</label>
+                            {{ form.password1 }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                            {{ form.password2 }}
+                        </div>
+
+                        <button type="submit" class="btn btn-signup">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+

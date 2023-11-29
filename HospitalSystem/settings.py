@@ -72,6 +72,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'HospitalSystem.wsgi.application'
+LOGIN_REDIRECT_URL = '/patient/dashboard/'
 
 
 # Database
